@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Lumberjack Game">
+  <div class="h-screen w-screen flex flex-col items-center justify-center bg-black p-4 relative">
+    <a href="/" class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full hover:bg-green-700 transition-colors text-sm">
+      Back
+    </a>
+    <div class="w-full max-w-3xl bg-zinc-900 rounded-lg shadow-lg overflow-hidden">
+      <iframe 
+        title="Lumber Jack Game" 
+        src="https://tbot.xyz/lumber/" 
+        class="w-full h-[100vh] border-0"
+      ></iframe>
+    </div>
+  </div>
+</Layout>
+

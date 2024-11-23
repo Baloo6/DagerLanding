@@ -1,0 +1,120 @@
+---
+const images = [
+  { src: "/carousel1.jpg", alt: "Image 1" },
+  { src: "/carousel2.jpg", alt: "Image 2" },
+  { src: "/carousel3.jpg", alt: "Image 3" },
+  { src: "/carousel4.jpg", alt: "Image 4" },
+  { src: "/carousel5.jpg", alt: "Image 5" },
+  { src: "/carousel6.png", alt: "Image 6" },
+];
+---
+
+<div class="relative w-full h-64 overflow-hidden bg-black bg-opacity-50 border border-green-800 rounded-lg lg:hidden">
+  <div class="flex transition-transform duration-300 ease-in-out h-full" id="mobileCarousel">
+    {images.map((image) => (
+      <div class="w-full flex-shrink-0">
+        <img src={image.src} alt={image.alt} class="w-full h-full object-cover object-center">
+      </div>
+    ))}
+  </div>
+  <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
+    {images.map((_, index) => (
+      <button class="w-2 h-2 rounded-full bg-green-500 opacity-50 focus:outline-none" data-index={index} aria-label={`Go to slide ${index + 1}`}></button>
+    ))}
+  </div>
+</div>
+
+<script>
+  const carousel = document.getElementById('mobileCarousel');
+  const slides = carousel.children;
+  const dots = document.querySelectorAll('[data-index]');
+  let currentIndex = 0;
+  let startX;
+  let isSwiping = false;
+
+  function updateCarousel() {
+    const offset = -currentIndex * 100;
+    carousel.style.transform = `translateX(${offset}%)`;
+    updateDots();
+  }
+
+  function updateDots() {
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('opacity-50', index !== currentIndex);
+      dot.classList.toggle('opacity-100', index === currentIndex);
+    });
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateCarousel();
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    updateCarousel();
+  }
+
+  function handleSwipe(diff) {
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    } else {
+      updateCarousel();
+    }
+  }
+
+  carousel.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    isSwiping = true;
+  }, { passive: true });
+
+  carousel.addEventListener('touchmove', (e) => {
+    if (!isSwiping) return;
+    const currentX = e.touches[0].clientX;
+    const diff = startX - currentX;
+    carousel.style.transform = `translateX(calc(-${currentIndex * 100}% - ${diff}px))`;
+  }, { passive: true });
+
+  carousel.addEventListener('touchend', (e) => {
+    if (!isSwiping) return;
+    const endX = e.changedTouches[0].clientX;
+    const diff = startX - endX;
+    handleSwipe(diff);
+    isSwiping = false;
+  });
+
+  carousel.addEventListener('touchmove', (e) => {
+    if (isSwiping) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      currentIndex = parseInt(dot.getAttribute('data-index'));
+      updateCarousel();
+    });
+  });
+
+  // Auto-slide functionality
+  let intervalId;
+
+  function startAutoSlide() {
+    intervalId = setInterval(nextSlide, 2500);
+  }
+
+  function stopAutoSlide() {
+    clearInterval(intervalId);
+  }
+
+  carousel.addEventListener('touchstart', stopAutoSlide);
+  carousel.addEventListener('touchend', startAutoSlide);
+
+  startAutoSlide();
+  updateDots();
+</script>
+

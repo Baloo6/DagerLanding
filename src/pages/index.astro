@@ -1,0 +1,192 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import Avatar from '../components/Avatar.astro';
+import ImageCarousel from '../components/ImageCarousel.astro';
+import MobileCarousel from '../components/MobileCarousel.astro';
+---
+<Layout title="Gianmarco Cavallo - Portfolio">
+  <main class="relative z-10 h-[98vh] p-1 sm:p-2 flex flex-col ">
+    
+    <div class="flex-grow pb-1 lg:pb-0.5 max-w-full mx-auto w-full overflow-y-auto overflow-x-hidden scrollbar-hide">
+      <!-- Desktop Layout -->
+      <div class="hidden lg:flex lg:flex-col lg:h-full">
+        <div class="flex-grow grid lg:grid-cols-[2fr,1fr] xl:grid-cols-[3fr,1fr] gap-1 lg:gap-2">
+          <!-- Main Content -->
+          <div class="space-y-2 flex flex-col">
+            <!-- Welcome Section -->
+            <div id="home" class="p-2 bg-black bg-opacity-50 border border-green-800 rounded-lg flex items-center justify-evenly">
+              <div class="space-y-1 flex-1">
+                <h1 class="text-3xl lg:text-4xl xl:text-5xl">
+                  Hola!, soy <span class="font-semibold text-green-400 typing-animation">Dot Dager</span>
+                </h1>
+                <p class="text-sm lg:text-base xl:text-lg">
+                  Streamer de calidad, adorador de los pepinos y chiste falicos. A veces hablo de programación.
+                </p>
+              </div>
+              <div class="relative w-24 h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 flex-shrink-0">
+                <Avatar />
+              </div>
+            </div>
+
+            <!-- Image Carousel Section -->
+            <ImageCarousel />
+
+            <!-- Contact Section -->
+            <div class="p-3 bg-black bg-opacity-50 border border-green-800 rounded-lg space-y-2">
+              <div class="space-y-1 text-green-200 text-xs">
+                <h2 class="text-base font-semibold text-green-400">Contacto y mis Redes!</h2>
+                <h3 class="font-medium text-green-300">DotDager@Gmail.com</h3>
+                <a href="https://linktr.ee/DotDager" class="text-xs text-green-300 hover:text-green-200 transition-colors">Linktree</a>
+                <SocialLinks></SocialLinks>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <div class="space-y-2 flex flex-col">
+            <!-- About Section -->
+            <div id="about" class="p-2 bg-black bg-opacity-50 border border-green-800 rounded-lg flex-grow">
+              <h2 class="font-medium mb-1 text-xs lg:text-sm text-green-400">Sobre mi:</h2>
+              <div class="space-y-1 text-xs text-green-200">
+                <p>
+                  ¡Epa, ¿cómo va, gente?! Soy Dager, el tipo que no sabe si su vida es un
+                  game over o un bug sin solución, pero que igual la está pasando de 10. 
+                  Si llegaste hasta acá, es porque seguro compartimos alguna de esas cosas raras que hacen 
+                  que la vida sea un poco más divertida.
+                </p>
+                <ul class="list-disc list-inside space-y-0.5">
+                  <li>🔧 Programación: Me encanta programar y siempre estoy buscando bugs para solucionar. Si te pinta aprender algo de código, ¡avisame que te cuento todo lo que sé!</li>
+                  <li>🐱 Gatos: Tengo unos gatos que son los reyes de la casa. Prepárate para verlos invadir mis streams en cualquier momento. Si te gustan los felinos, vas a estar en tu salsa.</li>
+                  <li>🎸 Guitarras: Además de programar, me gusta romperla con la guitarra. A veces me pongo a tocar algo para relajarme, así que estate atento al canal secundario.</li>
+                  <li>🥒 Pepinos: Y sí, soy un tipo con una extraña pasión por los pepinos. Si no entendés por qué, venite a mis streams y te lo explico… de una forma, digamos, “interesante”. 😏</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Now Section -->
+            <div id="now" class="p-2 bg-black bg-opacity-50 border border-green-800 rounded-lg">
+              <div class="flex items-center justify-between mb-1">
+                <h2 class="font-medium text-xs lg:text-sm text-green-400">Actualmente:</h2>
+                <span class="w-1 h-1 lg:w-1.5 lg:h-1.5 bg-green-500 rounded-full"></span>
+              </div>
+              <p class="text-xs text-green-200">Haciendo el master en catador de pepinos.</p>
+            </div>
+
+            <!-- Extras Section -->
+            <div id="extras" class="p-2 bg-black bg-opacity-50 border border-green-800 rounded-lg">
+              <h2 class="font-medium mb-1 text-xs lg:text-sm text-green-400">Extras</h2>
+              <a href="/lumberjack" class="text-xs text-green-300 hover:text-green-200 transition-colors">Lumberjack</a>
+              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="text-xs text-green-300 hover:text-green-200 transition-colors">Pepinojack</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Layout -->
+      <div class="lg:hidden space-y-2">
+        <!-- Welcome Section -->
+        <div id="home" class="p-3 bg-black bg-opacity-50 border border-green-800 rounded-lg space-y-2 flex flex-col items-center text-center">
+          <div class="space-y-1">
+            <h1 class="text-4xl">
+              Hola!, soy <span class="font-semibold text-green-400 typing-animation">Dot Dager</span>
+            </h1>
+            <p class="text-lg">
+              Streamer de calidad, adorador de los pepinos y chiste falicos. A veces hablo de programación.
+            </p>
+          </div>
+          
+          <div class="relative w-20 h-20">
+            <Avatar />
+          </div>
+        </div>
+
+        <!-- Image Carousel Section -->
+        <MobileCarousel/>
+
+        <!-- About Section -->
+        <div id="about" class="p-3 bg-black bg-opacity-50 border border-green-800 rounded-lg">
+          <h2 class="font-medium mb-2 text-sm text-green-400">Sobre mi:</h2>
+          <div class="space-y-2 text-xs text-green-200">
+            <p>
+              ¡Epa, ¿cómo va, gente?! Soy Dager, el tipo que no sabe si su vida es un
+              game over o un bug sin solución, pero que igual la está pasando de 10. 
+              Si llegaste hasta acá, es porque seguro compartimos alguna de esas cosas raras que hacen 
+              que la vida sea un poco más divertida.
+            </p>
+            <ul class="list-disc list-inside space-y-0.5">
+              <li>🔧 Programación: Me encanta programar y siempre estoy buscando bugs para solucionar. Si te pinta aprender algo de código, ¡avisame que te cuento todo lo que sé!</li>
+              <li>🐱 Gatos: Tengo unos gatos que son los reyes de la casa. Prepárate para verlos invadir mis streams en cualquier momento. Si te gustan los felinos, vas a estar en tu salsa.</li>
+              <li>🎸 Guitarras: Además de programar, me gusta romperla con la guitarra. A veces me pongo a tocar algo para relajarme, así que estate atento al canal secundario.</li>
+              <li>🥒 Pepinos: Y sí, soy un tipo con una extraña pasión por los pepinos. Si no entendés por qué, venite a mis streams y te lo explico… de una forma, digamos, “interesante”. 😏</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="p-3 bg-black bg-opacity-50 border border-green-800 rounded-lg space-y-2">
+          <div class="space-y-1 text-green-200 text-xs">
+            <h2 class="text-base font-semibold text-green-400">Contacto y mis Redes!</h2>
+            <h3 class="font-medium text-green-300">DotDager@Gmail.com</h3>
+            <a href="https://linktr.ee/DotDager" class="text-xs text-green-300 hover:text-green-200 transition-colors">Linktree</a>
+            <h4>----------------------------------------------------------------------------------</h4>
+          </div>
+          <SocialLinks></SocialLinks>
+        </div>  
+
+        <!-- Now Section -->
+        <div id="now" class="p-2 bg-black bg-opacity-50 border border-green-800 rounded-lg">
+          <div class="flex items-center justify-between mb-1">
+            <h2 class="font-medium text-xs lg:text-sm text-green-400">Actualmente:</h2>
+            <span class="w-1 h-1 lg:w-1.5 lg:h-1.5 bg-green-500 rounded-full"></span>
+          </div>
+          <p class="text-xs text-green-200">Haciendo el master en catador de pepinos.</p>
+        </div>
+
+        <!-- Extras Section -->
+        <div id="extras" class="p-3 bg-black bg-opacity-50 border border-green-800 rounded-lg">
+          <h2 class="font-medium mb-2 text-sm text-green-400">Extras</h2>
+          <a href="/lumberjack" class="text-green-300 hover:text-green-200 transition-colors">Lumberjack</a>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="text-xs text-green-300 hover:text-green-200 transition-colors">Pepinojack</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="relative z-10 mt-0.5 text-center text-[10px] text-green-700 lg:text-[7px] lg:mt-1">
+      <p>© 2024 - Crafted by Baloo🧸</p>
+    </footer>
+  </main>
+</Layout>
+
+<style>
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .typing-animation {
+    overflow: hidden;
+    border-right: .15em solid green;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    animation: 
+      typing 3.5s steps(30, end),
+      blink-caret .5s step-end infinite;
+  }
+
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: green }
+  }
+</style>
+
